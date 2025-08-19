@@ -1,0 +1,33 @@
+# apiVersion: security.istio.io/v1beta1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: deny-all-others
+#   namespace: secure-apps
+# spec:
+#   selector:
+#     matchLabels:
+#       app: flask-app-2
+#   action: DENY
+#   rules:
+#   - {}
+# ---
+
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-only-flask-app
+  namespace: secure-apps
+spec:
+  selector:
+    matchLabels:
+      app: flask-app-2
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["secure-apps"]
+  # - from:
+  #   - source:
+  #       principals: ["cluster.local/ns/secure-apps/sa/default"]
+
+
