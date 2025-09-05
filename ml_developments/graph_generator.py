@@ -33,21 +33,50 @@ with open("stat.json", "r") as f:
 
 
 import matplotlib.pyplot as plt
-
+import os
 # Choose one feature to visualize
-feature = "Sample std:"
+# feature = "Sample std:"
 
-# Extract values
-values = [stats[d][feature] for d in stats.keys()]
-labels = list(stats.keys())
+# # Extract values
+# values = [stats[d] for d in stats.keys()]
+# print(values)
+# labels = list(stats.keys())
 
 # Plot
-plt.figure(figsize=(10, 6))
-plt.bar(labels, values, color="skyblue")
-plt.title(f"Comparison of {feature} across datasets")
-plt.ylabel(feature)
-plt.xticks(rotation=45, ha="right")
-plt.grid(True, axis="y", linestyle="--", alpha=0.7)
-plt.show()
+# plt.figure(figsize=(10, 6))
+# plt.bar(labels, values, color="skyblue")
+# plt.title(f"Comparison of {feature} across datasets")
+# plt.ylabel(feature)
+# plt.xticks(rotation=45, ha="right")
+# plt.grid(True, axis="y", linestyle="--", alpha=0.7)
+# plt.show()
+
+features = ['p50', 'p90', 'p99', 'IQR', 'MAD', 'TailIndex',
+            'Fano', 'Population std:', 'Sample std:']
+
+# Create output directory
+os.makedirs("feature_charts", exist_ok=True)
+
+for feature in features:
+    # Extract values for this feature across datasets
+    values = [stats[d][feature] for d in stats.keys()]
+    labels = list(stats.keys())
+    
+    # Assign colors: green if "clean" in label, else red
+    colors = ["green" if "clean" in label.lower() else "red" for label in labels]
+    
+    # Plot
+    plt.figure(figsize=(10, 6))
+    plt.bar(labels, values, color=colors)
+    plt.title(f"Comparison of {feature} across datasets")
+    plt.ylabel(feature)
+    plt.xticks(rotation=45, ha="right")
+    plt.grid(True, axis="y", linestyle="--", alpha=0.7)
+    plt.tight_layout()
+    
+    # Save figure
+    filename = feature.replace(" ", "_").replace(":", "") + ".png"
+    plt.savefig(os.path.join("feature_charts", filename))
+    plt.close()
 
 
