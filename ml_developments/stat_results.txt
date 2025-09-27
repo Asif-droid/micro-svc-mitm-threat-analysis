@@ -1,6 +1,6 @@
 =================================================500 delay======================================================
 
-without mitm:
+Clean_500:
 {'p50': 0.04, 'p90': 0.078, 'p99': 0.11001, 
 'IQR': 0.036500000000000005, 
 'MAD': 0.018000000000000002,
@@ -119,3 +119,67 @@ clean_response_times.log
 'Fano': 0.21602964316532158, 
 'Population std:': 0.021567222816116127, 
 'Sample std:': 0.021675874500317983, 'StatusMix': {'200': 1.0}}
+
+
+
+
+=================================Drift Stats=================================
+
+==================clean_response_times.log==================
+Reference window size: 50, Test window size: 50
+Energy distance squared: 0.000175
+Energy distance (D): 0.013236
+Permutation test p-value: 0.9740
+
+==================mitm_response_times.log==================
+Reference window size: 50, Test window size: 50
+Energy distance squared: 0.000739
+Energy distance (D): 0.027188
+Permutation test p-value: 0.6703
+
+==================clean_response_times_burst_500.log==================
+Reference window size: 250, Test window size: 250
+Energy distance squared: 0.000401
+Energy distance (D): 0.020022
+Permutation test p-value: 0.0200
+
+==================mitm_response_times_burst_500.log==================
+Reference window size: 250, Test window size: 250
+Energy distance squared: 0.000285
+Energy distance (D): 0.016890
+Permutation test p-value: 0.1219
+
+====================clean_response_times_500.log===================
+Reference window size: 250, Test window size: 250
+Energy distance squared: 0.000104
+Energy distance (D): 0.010187
+Permutation test p-value: 0.6953
+
+===================mitm_response_times_500.log===================
+Reference window size: 250, Test window size: 250
+Energy distance squared: 0.000151
+Energy distance (D): 0.012298
+Permutation test p-value: 0.5594
+
+
+
+========================clean vs mitm response times=================
+
+===clean_response_times.log (ref) vs mitm_response_times.log (test)
+
+Energy distance squared: 0.003190
+Energy distance (D): 0.056482
+Permutation test p-value: 0.0010
+
+===clean_response_times_burst_500.log (ref) vs mitm_response_times_burst_500.log (test)
+
+Energy distance squared: 0.000804
+Energy distance (D): 0.028357
+Permutation test p-value: 0.0010
+
+===clean_response_times_500.log (ref) vs mitm_response_times_500.log (test)
+
+Energy distance squared: 0.001729
+Energy distance (D): 0.041578
+Permutation test p-value: 0.0010
+
