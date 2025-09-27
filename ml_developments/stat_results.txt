@@ -183,3 +183,49 @@ Energy distance squared: 0.001729
 Energy distance (D): 0.041578
 Permutation test p-value: 0.0010
 
+
+======================================cusum=======================================
+===clean_response_times.log (ref) vs mitm_response_times.log (test)
+
+=== Baseline parameters from clean run ===
+Mean (μ0)             : 0.046930 s
+Std  (σ0)             : 0.021676 s
+=== Chosen CUSUM parameters ===
+Reference value (k)   : 0.010838 s
+Decision threshold (h): 0.108379 s
+
+=== Detection statistics (MITM run) ===
+Max upward  CUSUM (S+) : 0.417012 s
+Max downward CUSUM (S-): 0.057552 s
+Result: Significant upward shift detected (possible MITM).
+
+
+===clean_response_times_500.log (ref) vs mitm_response_times_500.log (test)
+
+=== Baseline parameters from clean run ===
+Mean (μ0)             : 0.044974 s
+Std  (σ0)             : 0.024100 s
+=== Chosen CUSUM parameters ===
+Reference value (k)   : 0.012050 s
+Decision threshold (h): 0.180748 s
+
+=== Detection statistics (MITM run) ===
+Max upward  CUSUM (S+) : 0.398619 s
+Max downward CUSUM (S-): 0.037772 s
+
+Result: Significant upward shift detected (possible MITM).
+
+===clean_response_times_burst_500.log (ref) vs mitm_response_times_burst_500.log (test)
+=== Baseline parameters from clean run ===
+Mean (μ0)             : 0.073020 s
+Std  (σ0)             : 0.014746 s
+=== Chosen CUSUM parameters ===
+Reference value (k)   : 0.007373 s
+Decision threshold (h): 0.272800 s
+
+=== Detection statistics (MITM run) ===
+Max upward  CUSUM (S+) : 0.510495 s
+Max downward CUSUM (S-): 0.079470 s
+Result: Significant upward shift detected (possible MITM).
+
+
